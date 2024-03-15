@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <title>Agriculture Shop</title>
+  <style>
+     .sidebar {
+      width: 80%;
+      padding: 20px;
+      background-color: #f2f2f2;
+  height: 100%;
+    }
+
+    /* Default styles */
+.filter-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-dropdown:hover {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.filter-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive styles for tablets */
+@media only screen and (min-width: 600px) {
+  .filter-dropdown {
+    width: 80%;
+  }
+  
+}
+
+/* Responsive styles for laptops/desktops */
+@media only screen and (min-width: 992px) {
+  .filter-dropdown {
+    width: 60%;
+  }
+}
+
+/* Responsive styles for larger desktops */
+@media only screen and (min-width: 1200px) {
+  .filter-dropdown {
+    width: 50%;
+  }
+
+  .sidebar {
+    width: 20%;
+    height: auto;
+  }
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+    }
+
+
+    .main-content {
+      width: 80%;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px;
+      text-align: left;
+      width: 200px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: 50%;
+    }
+
+    .product-description {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .contact-button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    /* Add some styles for filters */
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Filters</h2>
+      <div class="filter-options">
+        <label for="category-filter">Category:</label>
+        <select id="category-filter" class="filter-dropdown">
+          <option value="all">All</option>
+          <option value="Fertilizer">Fertilizer</option>
+          <option value="Insecticide">Insecticide</option>
+          <option value="Herbicide">Herbicide</option>
+          <option value="Fungicide">Fungicide</option>
+          <option value="Rodenticide">Rodenticide</option>
+        </select>
+
+        <label for="provider-filter">Provider:</label>
+<select id="provider-filter" class="filter-dropdown">
+  <option value="all">All</option>
+  <option value="Southern petrochemical industries">Southern Petrochemical Industries</option>
+  <option value="Kothari Industrial Corporaion Ltd.">Kothari Industrial Corporation Ltd.</option>
+  <option value="LIQHUMUS® Liquid 18">LIQHUMUS® Liquid 18</option>
+  <option value="Tata Private LTD">Tata Private LTD</option>
+  <option value="DR.EARTH">DR.EARTH</option>
+  <option value="HAWK SOFT BAIT">HAWK SOFT BAIT</option>
+  <!-- Add more providers as needed -->
+</select>
+
+
+       
+        <!-- Add more filter options as needed -->
+      </div>
+    </div>
+    <div class="main-content" id="product-cards-container">
+      <!-- Product cards will be dynamically added here -->
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const products = [
+          {
+            title: "UREA",
+            image:"https://th.bing.com/th/id/OIP.WsgNNVY1h80B-vsn34V9kgHaIS?rs=1&pid=ImgDetMain",
+            provider: "Southern petrochemical industries",
+            category: "Fertilizer",
+            size: "45 kg",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accompanying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment", 
+
+            availshop:"availshop",
+            shopimage:"http://127.0.0.1:5500/agri_/OIP.jpg",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          },
+          {
+            title: "SSP",
+            image:
+              "https://th.bing.com/th/id/R.6e7cce5e51a008443beb1dc1da2ffc98?rik=6q4fBNGKnpqamA&riu=http%3a%2f%2fwww.emundi.com%2fimages%2fdetailed%2f9%2fWhatsApp_Image_2021-12-21_at_2.31.47_PM.jpeg&ehk=04qWlO63HaSNA3jQaOaVcM3oFR6ZjuJQKkGaN4DiPqY%3d&risl=&pid=ImgRaw&r=0",
+            provider: "Kothari Industrial Corporaion Ltd.",
+            category: "Fertilizer",
+            size: "50 kg",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          },
+          {
+            title: "DAP",
+            image:
+              "https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            provider: "Southern petrochemical industries",
+            category: "Fertilizer",
+            size: "50 kg",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+
+            
+          },
+          {
+            title: "SOIL CONDITIONER & BIOSTIMULANT ",
+            image:
+              "https://www.humintech.com/fileadmin/content_images/agriculture/products/liqhumus_liquid_18/EN_liqhumus_liquid_18/1_LiqHumus_Liquid_18_EN.png",
+            provider: "LIQHUMUS® Liquid 18",
+            category: "Fertilizer",
+            size: "45 kg",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          },
+          {
+            title: "Tafgor",
+            image:
+              "https://5.imimg.com/data5/ZT/DY/PL/GLADMIN-3061/tafgor-dimethoate-30-ec-insecticide-500x500.jpg",
+            provider: "Tata Private LTD",
+            category: "Insecticide",
+            size: "1 L",
+            price: "Rs.100",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          },
+          {
+            title: "Herbicide B",
+            image:
+              "https://kissanemart.com/storage/tata-panida-grande-herbicide-800x800.jpg",
+            provider: "Tata Private LTD",
+            category: "Herbicide",
+            size: "45 kg",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          },
+          {
+            title: "Fungicide C",
+            image:
+              "https://images.homedepot-static.com/productImages/9e28bcf0-3cf0-4919-9d9c-9636cbc30561/svn/dr-earth-organic-lawn-disease-control-1023x-64_1000.jpg",
+            provider: "DR.EARTH",
+            category: "Fungicide",
+            size: "750 Ml",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          },
+          {
+            title: "Rodenticide D",
+            image:
+              "https://static.grainger.com/rp/s/is/image/Grainger/55MJ95_AS01",
+            provider: "HAWK SOFT BAIT",
+            category: "Rodenticide",
+            size: "45 kg",
+            price: "Rs.500",
+            details: "Product Details",
+            type: "Chemical Fertiliser",
+            content: "46.2% N",
+            Crops: "All Crops",
+            Dosage: "Split Application",
+            formulation: "Granular",
+            Remark:
+              "the information provided here is for reference only. Always refer to the Product labels  and accomapnying leaflets for complete product details and direction for use.",
+            application: "Foilar Spray , Soil Treatment",
+            availshop:"availshop",
+            shopimage:"https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png",
+            agrirupee:"RS.200",
+            litre:"300 ML",
+            shoptitle:"Sri Jothi Lineshwar Agro Agencies",
+            km:"19 km Away",
+            contact:"Contact"
+          }
+          // Add more products with details here
+        ];
+
+
+        const productCardsContainer = document.getElementById("product-cards-container");
+
+function createProductCard(product) {
+  const card = document.createElement("div");
+  card.classList.add("product-card");
+
+  const image = document.createElement("img");
+  image.src = product.image;
+  image.alt = "Product Image";
+  card.appendChild(image);
+
+  const title = document.createElement("h3");
+  title.textContent = product.title;
+  card.appendChild(title);
+
+  const provider = document.createElement("p");
+  provider.textContent = `Provider: ${product.provider}`;
+  card.appendChild(provider);
+
+  const category = document.createElement("p");
+  category.textContent = `Category: ${product.category}`;
+  card.appendChild(category);
+
+  const size = document.createElement("p");
+  size.textContent = `Size: ${product.size}`;
+  card.appendChild(size);
+
+  const price = document.createElement("p");
+  price.textContent = `Price: ${product.price}`;
+  card.appendChild(price);
+
+  const descriptionButton = document.createElement("button");
+  descriptionButton.textContent = "View Description";
+  descriptionButton.addEventListener("click", () => showProductDescription(product));
+  card.appendChild(descriptionButton);
+
+  // Add additional details to the product card
+  const additionalDetails = document.createElement("div");
+  additionalDetails.classList.add("product-description");
+  additionalDetails.innerHTML = `
+    <p>${product.availshop}: ${product.shopimage}</p>
+    <p>${product.agrirupee}: ${product.litre}</p>
+    <p>${product.shoptitle}: ${product.km}</p>
+    <p>${product.contact}</p>
+  `;
+  card.appendChild(additionalDetails);
+
+  productCardsContainer.appendChild(card);
+}
+
+function showProductDescription(product) {
+  window.location.href = `product_description.html?title=${encodeURIComponent(product.title)}&image=${encodeURIComponent(product.image)}&provider=${encodeURIComponent(product.provider)}&category=${encodeURIComponent(product.category)}&size=${encodeURIComponent(product.size)}&price=${encodeURIComponent(product.price)}&details=${encodeURIComponent(product.details)}&type=${encodeURIComponent(product.type)}&content=${encodeURIComponent(product.content)}&Crops=${encodeURIComponent(product.Crops)}&Dosage=${encodeURIComponent(product.Dosage)}&formulation=${encodeURIComponent(product.formulation)}&Remark=${encodeURIComponent(product.Remark)}&application=${encodeURIComponent(product.application)}&availshop=${encodeURIComponent(product.availshop)}&shopimage=${encodeURIComponent(product.shopimage)}&agrirupee=${encodeURIComponent(product.agrirupee)}&litre=${encodeURIComponent(product.litre)}&shoptitle=${encodeURIComponent(product.shoptitle)}&km=${encodeURIComponent(product.km)}&contact=${encodeURIComponent(product.contact)}`;
+}
+
+function updateFilters() {
+  const selectedCategoryFilters = getSelectedValues(document.getElementById("category-filter"));
+  const selectedProviderFilters = getSelectedValues(document.getElementById("provider-filter"));
+
+  const filteredProducts = products.filter(product => {
+    const categoryMatch = selectedCategoryFilters.includes("all") || selectedCategoryFilters.includes(product.category);
+    const providerMatch = selectedProviderFilters.includes("all") || selectedProviderFilters.includes(product.provider);
+    return categoryMatch && providerMatch;
+  });
+
+  productCardsContainer.innerHTML = ""; // Clear existing product cards
+
+  filteredProducts.forEach(createProductCard);
+}
+
+function getSelectedValues(dropdown) {
+  const selectedOptions = dropdown.options;
+  const selectedValues = [];
+
+  for (let i = 0; i < selectedOptions.length; i++) {
+    if (selectedOptions[i].selected) {
+      selectedValues.push(selectedOptions[i].value);
+    }
+  }
+
+  return selectedValues;
+}
+
+
+document.querySelectorAll(".filter-checkbox, .filter-dropdown").forEach(filter => {
+  filter.addEventListener("change", updateFilters);
+});
+
+// Initial population of product cards
+products.forEach(createProductCard);
+});
+  </script>
+</body>
+</html>

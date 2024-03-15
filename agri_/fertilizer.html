@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+   
+</head>
+<body>
+ 
+    <div class="container">
+        <h2 style="font-size: 30px; position: sticky; top: 0; background-color: white; z-index: 1000; padding: 20px 0;">
+            <i class="fas fa-seedling"></i>&nbsp; Fertilizers  <button onclick="goToHomePage()" class="view-all-button"><i class="fas fa-arrow-left"></i></button>
+        </h2>
+        <div class="cart" id="fertilizers-container"></div>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2px 30px;
+            position: sticky;
+            top: 0;
+            background-color: white;
+        }
+    
+        .cart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    
+        .fertilizer {
+            flex: 0 0 calc(30% - 20px);
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+        }
+    
+        .fertilizer img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        .fertilizer h3 {
+            margin-bottom: 5px;
+        }
+    
+        .fertilizer p {
+            margin-bottom: 10px;
+        }
+    
+        /* Media Queries for responsiveness */
+        @media screen and (max-width: 1024px) {
+            .fertilizer {
+                flex: 0 0 calc(45% - 20px);
+            }
+        }
+    
+        @media screen and (max-width: 768px) {
+            .fertilizer {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+    
+        .view-all-button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+            margin-left: 10px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    
+        .view-all-button:hover {
+            background-color: rgb(154, 154, 154);
+        }
+    </style>
+    
+    <script>
+        // Dummy JSON data for demonstration
+        const fertilizersData = [
+    {
+        "name": "Fertilizer A",
+        "brand": "Brand X",
+        "rate": "10",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer B",
+        "brand": "Brand Y",
+        "rate": "20",
+        "unit": "gram",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer D",
+        "brand": "Brand A",
+        "rate": "30",
+        "unit": "gram",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    }, {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    {
+        "name": "Fertilizer C",
+        "brand": "Brand Z",
+        "rate": "15",
+        "unit": "kg",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4jMDSGViTlMafB8Ziuxr1o65Im6UBBui5Cg&usqp=CAU"
+    },
+    // Add more fertilizer objects as needed
+];
+
+
+        // Function to display fertilizers
+        function displayFertilizers() {
+            const container = document.getElementById('fertilizers-container');
+            container.innerHTML = '';
+
+            fertilizersData.forEach(fertilizer => {
+                const fertilizerElement = document.createElement('div');
+                fertilizerElement.classList.add('fertilizer');
+
+                const imageElement = document.createElement('img');
+                imageElement.src = fertilizer.image;
+                imageElement.alt = fertilizer.name;
+                fertilizerElement.appendChild(imageElement);
+
+                const detailsElement = document.createElement('div');
+                detailsElement.innerHTML = `
+                    <h3>${fertilizer.name}</h3>
+                    <p><strong>Brand:</strong> ${fertilizer.brand}</p>
+                    <p><strong>Rate:</strong> ${fertilizer.rate} ${fertilizer.unit}</p>
+                    <p>${fertilizer.details}</p>
+                `;
+                fertilizerElement.appendChild(detailsElement);
+
+                container.appendChild(fertilizerElement);
+            });
+        }
+
+        // Function to be called when clicking "View All" button
+        function viewAllFertilizers() {
+            displayFertilizers();
+        }
+
+        // Initial call to display fertilizers
+        displayFertilizers();
+    function goToHomePage(){
+        window.location.href = "shop-1.html";
+    }
+    </script>
+</body>
+</html>
