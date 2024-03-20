@@ -10,26 +10,34 @@
 <body>
  
     <div class="container">
-        <h2 style="font-size: 30px; position: sticky; top: 0; background-color: white; z-index: 1000; padding: 20px 0;">
-            <i class="fas fa-seedling"></i>&nbsp; Plant Growth Regulators (PGRs)  <button onclick="goToHomePage()" class="view-all-button"><i class="fas fa-arrow-left"></i></button>
+        <h2>
+            <i class="fas fa-seedling"></i>&nbsp; Plant Growth Regulators<button onclick="goToHomePage()" class="view-all-button"><i class="fas fa-arrow-left"></i></button>
         </h2>
         <div class="cart" id="pgrs-container"></div>
     </div>
     <style>
         body {
-            font-family: Arial, sans-serif;
+   
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-    
+        @media only screen and (max-width: 768px) {
+            /* Specific styles for smaller screens */
+            h2 {
+                font-size: 18px;
+            }
+        
+            .view-all-button {
+                padding: 8px 16px;
+            }
+        }
         .container {
             max-width: 100%;
             margin: 0 auto;
             padding: 2px 30px;
-            position: sticky;
-            top: 0;
+
             background-color: white;
         }
     
@@ -49,7 +57,9 @@
         }
     
         .pgr img {
-            max-width: 100%;
+            max-width: 50%;
+            max-height: 50%;
+
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -91,99 +101,124 @@
             font-size: 18px;
             font-weight: bold;
         }
-    
+    /* Media query for screens smaller than or equal to 768px (tablets and smartphones) */
+@media only screen and (max-width: 768px) {
+    /* Specific styles for smaller screens */
+    .view-all-button {
+        background-color: #000000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px; /* Adjusted font size for smaller screens */
+        cursor: pointer;
+        border-radius: 50px; /* Making it a circle */
+        font-weight: bold;
+        margin-left: 0; /* Removed margin */
+    }
+}
+
         .view-all-button:hover {
             background-color: rgb(154, 154, 154);
         }
+        h2 {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 1000; /* Ensure the sticky element is above other content */
+        }
+        
     </style>
     
     <script>
         // Dummy JSON data for demonstration
         const pgrsData = [
-            {
-                "name": "PGR A",
-                "brand": "Brand X",
-                "rate": "10",
-                "unit": "kg",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR B",
-                "brand": "Brand Y",
-                "rate": "20",
-                "unit": "gram",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR A",
-                "brand": "Brand X",
-                "rate": "10",
-                "unit": "kg",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR B",
-                "brand": "Brand Y",
-                "rate": "20",
-                "unit": "gram",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR A",
-                "brand": "Brand X",
-                "rate": "10",
-                "unit": "kg",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR B",
-                "brand": "Brand Y",
-                "rate": "20",
-                "unit": "gram",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR A",
-                "brand": "Brand X",
-                "rate": "10",
-                "unit": "kg",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR B",
-                "brand": "Brand Y",
-                "rate": "20",
-                "unit": "gram",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR A",
-                "brand": "Brand X",
-                "rate": "10",
-                "unit": "kg",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR B",
-                "brand": "Brand Y",
-                "rate": "20",
-                "unit": "gram",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR C",
-                "brand": "Brand Z",
-                "rate": "15",
-                "unit": "kg",
-                "image": "https://via.placeholder.com/150",
-            },
-            {
-                "name": "PGR D",
-                "brand": "Brand A",
-                "rate": "30",
-                "unit": "gram",
-                "image": "https://via.placeholder.com/150",
-            }
+        {
+            "name": "PGR ",
+            "brand": "Greenrich: 0.186% Gibberalic Acid",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://www.anuproducts.in/wp-content/uploads/2019/06/googly.jpg"
+        },
+        {
+            "name": "PGR",
+            "brand": "Cyto Max: 0.001% Gibberalic Acid",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://in.uplonline.com/product_images/MACARENA.jpg"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Cropfeed: 0.05% Tricontanol GR",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://badikheti-production.s3.ap-south-1.amazonaws.com/products/20220826114313812557752.jpeg?tr=w-216,h-288"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Acmemagic: 0.1% Tricontanol EW",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://badikheti-production.s3.ap-south-1.amazonaws.com/products/20220808153139750253643.jpg?tr=w-216,h-288"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Florafix: 4.5% Alpha Naphthyl Acetic",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://kisanshop.in/cdn/shop/products/Shivalik-Bloomer-20L-Plant-Growth-Regulator-_PGR_grande.jpg"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Ripon: 39% Ethiphon",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCpjCw-1KtJhU_dTIkEKt_X75FUu2fCAhhpA&usqp=CAU"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Greenrich: 0.186% Gibberalic Acid",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://5.imimg.com/data5/OF/VW/MY-6399641/isabion-pgr-syngenta.png"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Cyto Max: 0.001% Gibberalic Acid",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://agribegri.com/productimage/fb6772066506d875d83041ffb3fe7a46-03-19-22-14-00-39.jpg"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Cropfeed: 0.05% Tricontanol GR",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVj8Wok-0-C8fV55kOT3WTU-JecwLtaEELg&usqp=CAU"
+        },
+        {
+            "name": "PGR",
+            "brand": "Acmemagic: 0.1% Tricontanol EW",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxM5qS2Z2-KAYjDk0M5vRPUbtgLaxZiG8NcA&usqp=CAU"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Florafix: 4.5% Alpha Naphthyl Acetic",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQihbpy5THV9jJSW9-iPc5KzcX9w95oB52mEg&usqp=CAU"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Ripon: 39% Ethiphon",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRojA2r4FdhSL9HbR4PLgGeb7JdLWZzOIfB0g&usqp=CAU"
+        }
             // Add more PGR objects as needed
         ];
 

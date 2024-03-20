@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <title>Product Description</title>
 
     <style>
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+
+
  .card34 {
-      box-shadow: 0 4px 8px 0 rgba(11, 255, 3, 0.774);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.774);
       transition: 0.3s;
       max-width: 300px;
       margin: 25px;
+      height:auto;
     }
 
     .container34 {
       padding: 20px;
     }
+    .container34 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 35vh; /* Ensure container covers the entire viewport height */
+    }
+    
+
+    
+    .container34 a {
+        /* Styles for <a> elements (buttons) */
+        margin-top: 0px; /* Push the button to the bottom */
+    }
+    
 
     img {
       width: 100%;
@@ -61,17 +83,26 @@
             flex-direction: column;
             margin: 20px;
             padding: 20px;
-            background-color: #6fae8f20;
-            border: 2px solid #0f8b6f;
+            background-color: #00000020;
+            border: 2px solid #000000;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgb(42, 238, 65);
+            box-shadow: 0 0 15px rgb(234, 244, 235);
+            height: 100%;
         }
 
-        .product-description, .specification {
+        .product-description {
             padding: 20px;
             box-sizing: border-box;
-            background-color: #9e8f8f70;
-            box-shadow: 0 0 15px rgb(238, 84, 42);
+            background-color: #f0f0f0;
+            box-shadow: 0 0 15px rgb(0, 0, 0);
+   
+        }
+        .specification {
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            box-shadow: 0 0 15px rgb(0, 0, 0);
+
         }
 
         #image {
@@ -108,13 +139,13 @@
         }
 
         h2 {
-            color: #0f8b6f;
+            color: #000000;
             margin-top: 0;
         }
 
         h1 {
             text-align: center;
-            color: #0f8b6f;
+            color: #000000;
             margin-bottom: 20px;
         }
 
@@ -122,7 +153,7 @@
             margin: 20px;
             padding: 20px;
            
-            border: 2px solid #0f8b6f;
+            border: 2px solid #000000;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             background-color: #9e8f8f70;
@@ -132,7 +163,7 @@
             width: 350px;
             height: 400px;
             border-radius: 12px;
-            box-shadow: 0 0 10px rgba(200, 104, 104, 0.903);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.903);
             padding: 1px;
         }
 
@@ -234,23 +265,33 @@
    
     
     <div class="card34">
-      <img src="http://127.0.0.1:5500/agri_/OIP.jpg" alt="Shop Image">
+      <img src="OIP.jpg" alt="Shop Image">
       <div class="container34">
-        <h4><b>Sri Jothi Lineshwar Agro Agencies</b></h4>
+        <h4><b>SREE VELAVAN ENTERPRISES Organic Fertilizer and Pesticides</b></h4>
        
-        <p>19 km Away</p>
-        <a href="/agri_/shop-1.html" class="btn">Visit Shop</a>
+        <p>10 km Away</p>
+        <a href="shop-1.html" class="btn">Visit Shop</a>
       </div>
     </div>
     <div class="card34">
-      <img src="http://127.0.0.1:5500/agri_/OIP.jpg" alt="Shop Image">
+      <img src="https://lh3.googleusercontent.com/p/AF1QipPXyzKqo8zxCfR0LMV8f5bM2HUbQhc9p53Ua060=s1360-w1360-h1020" alt="Shop Image">
       <div class="container34">
-        <h4><b>Sri Jothi Lineshwar Agro Agencies</b></h4>
+        <h4><b>Agni Fertilisers and Chemicals Salem</b></h4>
        
         <p>19 km Away</p>
-        <a href="/agri_/shop-1.html" class="btn">Visit Shop</a>
+        <a href="shop-2.html" class="btn">Visit Shop</a>
       </div>
     </div>
+    <div class="card34">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipPFP4QM9wbNChdrsjgb7bW0UqE2teEmQvzDmXgZ=s1360-w1360-h1020" alt="Shop Image">
+        <div class="container34">
+          <h4><b>FACT Agro Service Centre <br>Salem</b></h4>
+         
+          <p>19 km Away</p>
+          <a href="shop-3.html" class="btn">Visit Shop</a>
+        </div>
+      </div>
+      
 </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {

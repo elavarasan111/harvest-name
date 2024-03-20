@@ -9,6 +9,7 @@
       category: "Fertilizer",
       size: "45 kg"
   },
+  
   {
       title: "SSP",
       image: "https://th.bing.com/th/id/R.6e7cce5e51a008443beb1dc1da2ffc98?rik=6q4fBNGKnpqamA&riu=http%3a%2f%2fwww.emundi.com%2fimages%2fdetailed%2f9%2fWhatsApp_Image_2021-12-21_at_2.31.47_PM.jpeg&ehk=04qWlO63HaSNA3jQaOaVcM3oFR6ZjuJQKkGaN4DiPqY%3d&risl=&pid=ImgRaw&r=0",
@@ -44,7 +45,7 @@
       return `
           <div class="card mx-2" style="width: 18rem;">
             <img src="${product.image}" class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;" alt="${product.title}">
-              <div class="card-body"   style="background-color:#b3cccc; padding: 15px; border-radius: 0 0 10px 10px;">
+              <div class="card-body"   style="background-color:#f0f0f0;color:black; padding: 15px; border-radius: 0 0 10px 10px;">
                   <h5 class="card-title">${product.title}</h5>
                   <p class="card-text">Location: ${product.provider}</p>
                   <p class="card-text">Category: ${product.category}</p>
@@ -61,7 +62,7 @@
           slideshowHTML += `
               <div class="mySlides1 card mx-2">
                   <img src="${product.image}" class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;" alt="${product.title}">
-                  <div class="text"  style="background-color:#b3cccc; padding: 15px; border-radius: 0 0 10px 10px;">
+                  <div class="text"  style="background-color:#f0f0f0;color:black; padding: 15px; border-radius: 0 0 10px 10px;">
                       <h5 class="card-title" style="color: #007bff;">${product.title}</h5>
                       <p class="card-text">By ${product.provider}</p>
                       <p class="card-text">Category: ${product.category}</p>
@@ -147,32 +148,36 @@ displaySlidesFertilizer();
 
 const shops = [
     {
-        title: "Shop 1",
-        image: "OIP.jpg",
+        title: "SREE VELAVAN ENTERPRISES",
+        image: "https://lh3.googleusercontent.com/p/AF1QipOfLA67Yx7jGlSsdVPyTDm2OvRnlms18iFI0y2a=s1360-w1360-h1020",
         location: "Salem",
         currentLocation: "25 km away",
-        verified: true
+        verified: true,
+        link:"shop-1.html"
     },
     {
-        title: "Shop 2",
-        image: "https://th.bing.com/th/id/OIP.Whus61ppXJFhEg3iTbqiNwHaJ4?w=1440&h=1920&rs=1&pid=ImgDetMain",
-        location: "Example City",
+        title: "Agni Fertilisers and Chemicals",
+        image: "https://lh3.googleusercontent.com/p/AF1QipPXyzKqo8zxCfR0LMV8f5bM2HUbQhc9p53Ua060=s1360-w1360-h1020",
+        location: "Salem",
         currentLocation: "10 km away",
-        verified: false
+        verified: false,
+        link:"shop-2.html"
     },
     {
-        title: "Shop 3",
-        image: "https://2.bp.blogspot.com/-C8s-sJ7Gdtw/XIjh8bVBYjI/AAAAAAAAFvk/B1-wBJHdBcsR0XBxgkHI4vUzyp-ylwYRwCLcBGAs/w1200-h630-p-k-no-nu/ayurvedalaya-medicine-shop-bannerghatta-road-bangalore-ayurvedic-medicine-shops-3vx9zbx.jpg",
-        location: "Example City",
+        title: "FACT Agro Service Centre",
+        image: "https://lh3.googleusercontent.com/p/AF1QipPFP4QM9wbNChdrsjgb7bW0UqE2teEmQvzDmXgZ=s1360-w1360-h1020",
+        location: "Salem",
         currentLocation: "1 km away",
-        verified: false
+        verified: true,
+        link:"shop-3.html"
     },
     {
-        title: "Shop 4",
+        title: "Universal Fertiliser Corporation",
         image: "https://zamorinholidays.com/wp-content/uploads/2019/02/kdhp-tea-online-300x300.jpg",
-        location: "Example City",
+        location: "Salem",
         currentLocation: "1 km away",
-        verified: false
+        verified: false,
+        link:"shop-4.html"
     },
     {
         title: "Shop 5",
@@ -187,16 +192,18 @@ const shops = [
 // Function to generate card HTML for a shop
 function generateCardHTML(shop) {
     return `
-        <div class="card mx-2" style="width: 18rem;">
-          <img src="${shop.image}" class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;" alt="${shop.title}">
+    <div class="card mx-2" style="width: 18rem;">
+    <img src="${shop.image}" class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;" alt="${shop.title}">
 
-            <div class="card-body"   style="background-color:#b3cccc; padding: 15px; border-radius: 0 0 10px 10px;">
-                <h5 class="card-title">${shop.title}</h5>
-                <p class="card-text">Location: ${shop.location}</p>
-                <p class="card-text">Current Location: ${shop.currentLocation}</p>
-                <p class="card-text">Verified: ${shop.verified ? 'Yes' : 'No'}</p>
-            </div>
-        </div>
+    <div class="card-body" style="background-color:#f0f0f0;color:black; padding: 15px; border-radius: 0 0 10px 10px;">
+        <h5 class="card-title"><a href="${shop.link}" target="_blank" style="text-decoration: none;">${shop.title}</a></h5>
+        <!-- Added inline style to remove text decoration -->
+        <p class="card-text">Location: ${shop.location}</p>
+        <p class="card-text">Current Location: ${shop.currentLocation}</p>
+        <p class="card-text">Verified: ${shop.verified ? 'Yes' : 'No'}</p>
+    </div>
+</div>
+
     `;
 }
 
@@ -207,7 +214,7 @@ shops.forEach((shop, index) => {
     slideshowHTML += `
         <div class="mySlides card mx-2">
             <img src="${shop.image}" class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;" alt="${shop.title}">
-            <div class="text"  style="background-color:#b3cccc; padding: 15px; border-radius: 0 0 10px 10px;">
+            <div class="text"  style="background-color:#f0f0f0;color:black; padding: 15px; border-radius: 0 0 10px 10px;">
                 <h5 class="card-title" style="color: #007bff;">${shop.title}</h5>
                 <p class="card-text">Location: ${shop.location}</p>
                 <p class="card-text">Current Location: ${shop.currentLocation}</p>
@@ -343,7 +350,7 @@ showSlides();
         return `
             <div class="card mx-2" style="width: 18rem;">
               <img src="${pesticide.image}" class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;"  alt="${pesticide.title}">
-                <div class="card-body"  style="background-color:#b3cccc; padding: 15px; border-radius: 0 0 10px 10px;">
+                <div class="card-body"  style="background-color:#f0f0f0;color:black;padding: 15px; border-radius: 0 0 10px 10px;">
                     <h5 class="card-title" >${pesticide.title}</h5>
                     <p class="card-text">Provider: ${pesticide.provider}</p>
                     <p class="card-text">Category: ${pesticide.category}</p>
@@ -361,7 +368,7 @@ showSlides();
             slideshowHTML += `
                 <div class="mySlides2 card mx-2">
                     <img src="${pesticide.image}"  class="card-img-top img-fluid" style="max-width: 100%; height: 350px; max-height: 300px;" alt="${pesticide.title}">
-                    <div class="text" style="background-color:#b3cccc; padding: 15px; border-radius: 0 0 10px 10px;">
+                    <div class="text" style="background-color:#f0f0f0   ; padding: 15px; border-radius: 0 0 10px 10px;">
                         <h5 class="card-title" style="color: #007bff;">${pesticide.title}</h5>
                         <p class="card-text">By ${pesticide.provider}</p>
                         <p class="card-text">Category: ${pesticide.category}</p>

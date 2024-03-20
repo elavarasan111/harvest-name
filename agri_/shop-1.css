@@ -148,7 +148,7 @@ Demo purposes only
 }
 
 .img-profile {
-    height: 400px;
+    height: 200px;
     border-radius: 20%;
     align-items: flex-start;
 }
@@ -206,8 +206,25 @@ Demo purposes only
 .large-button i {
     margin-left: 1px;
 }
-.fertilizer-container {
-    overflow-x: auto; /* Enable horizontal scrollbar */
+
+
+@media only screen and (max-width: 600px) {
+    .fertilizer-container h2 button
+    .herbicide-container h2 button,
+    .pesticide-container h2 button,
+    .pgr-container h2 button {
+        font-size: 14px;
+    }
+}
+
+/* For screens up to 1200px wide */
+@media only screen and (max-width: 1200px) {
+    .fertilizer-container h2 button
+    .herbicide-container h2,
+    .pesticide-container h2,
+    .pgr-container h2 {
+        font-size: 20px;
+    }
 }
 
 .fertilizer-list {
@@ -233,22 +250,34 @@ Demo purposes only
     display: inline-block;
     vertical-align: top;
 }
-
 .view-all-button {
     float: right;
     margin-right: 40px;
     color: rgb(13, 13, 168);
     font-weight: bold;
     border: none;
+    position: sticky;
     background-color: white;
     font-size: 18px;
+    z-index: 10000;
+
 }
+
+.fertilizer-container {
+    overflow-x: auto; 
+    width: 100%;
+    position: relative;
+}
+
+
+
 .herbicide-container {
     overflow-x: auto; 
 }
 .herbicide-list {
     white-space: nowrap;
     padding: 10px;
+    font-size: 18px;
 }
 
 .herbicide-item {
@@ -260,7 +289,7 @@ Demo purposes only
 .herbicide-item img {
     max-width: 150px; 
     max-height: 200px; 
-    width: 100px;
+    width: auto;
     height: auto;
     margin-right: 10px;
 }
@@ -313,6 +342,7 @@ Demo purposes only
     display: inline-block;
     vertical-align: top;
     margin-right: 20px; /* Adjust margin between items */
+    font-size: 18px;
 }
 
 .pgr-item img {
@@ -345,12 +375,48 @@ Demo purposes only
 }
 @media only screen and (max-width: 600px) {
     .head-font {
-        font-size: 20px; 
+        font-size: 14px;
+         text-align: center;
+       position: sticky; 
+       top: 0;
+        background-color: white; 
+        z-index: 1000;
+         padding: 10px 0 10px;
     }
+    .back-button {
+        font-size: 10px;
+        position: absolute;
+        top: 1;
+        left: 0;
+        border-radius: 30px;
+        padding: 5px 10px;
+        margin-left: 20px;
+        color: white;
+        background-color: black;
+      }
 }
 
 @media only screen and (min-width: 1200px) {
     .head-font {
         font-size: 40px; 
+        text-align: center;
+        position: sticky; 
+        top: 0;
+         background-color: white; 
+         z-index: 1000;
+          padding: 10px 0;
     }
+    .back-button {
+        font-size: 18px;
+        position: absolute;
+        top: 1;
+        left: 0;
+        border-radius: 30px;
+        padding: 10px 30px;
+        margin-left: 20px;
+        color: white;
+        background-color: black;
+      }
 }
+
+/* style="text-align: center; font-size: 30px; position: sticky; top: 0; background-color: white; z-index: 1000; padding: 10px 0;" */
